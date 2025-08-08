@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List - Farhan</title>
+
+    <!-- CSS External Link -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+    <!-- Main Header -->
+    <header class="text-center">
+        <h1 class="text-3xl font-bold">Todo List</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-[16px]">
+
+        <form>
+            <div class="flex justify-center mt-5 mb-5">
+                <input type="text" id="todo-input" placeholder="Add a new todo" class="border p-2 w-1/2">
+                <input type="date" id="date-input" placeholder="Add a new todo" class="border p-2 w-1/2">
+
+                <button type="button" onclick="validateForm();"
+                    class="rounded-[4px] ml-2 bg-blue-500 text-white p-2">Add
+                    Todo</button>
+            </div>
+        </form>
+
+      <!-- Action Section -->
+<section class="flex justify-between">
+    <select id="filter-select" class="rounded-[4px] bg-blue-500 text-white p-2">
+        <option value="">Filter</option>
+        <option value="">All</option>
+        <option value="Pending">Pending</option>
+        <option value="Done">Done</option>
+    </select>
+    <button onclick="clearTodos();" class="rounded-[4px] bg-red-500 text-white p-2">Delete All</button>
+</section>
+
+
+
+       <!-- Todo List Section -->
+<section id="todo-list" class="mt-5">
+    <table class="todo-table">
+        <thead>
+            <tr>
+                <th>TASK</th>
+                <th>DUE DATE</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody id="todo-body">
+            <tr>
+                <td colspan="4" class="no-task">No task found</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <!-- Footer Content -->
+    <footer>
+        <p class="text-center text-gray-500 mt-5">© 2025 Todo List Application</p>
+    </footer>
+
+    <!-- JavaScript External Link -->
+    <script src="js/script.js"></script>
+</body>
+
+</html>
