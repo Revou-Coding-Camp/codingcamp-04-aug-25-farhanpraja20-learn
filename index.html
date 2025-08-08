@@ -34,6 +34,12 @@
             </div>
         </form>
 
+        <select id="status-filter" onchange="filterTodos(this.value)">
+    <option value="">All</option>
+    <option value="Pending">Pending</option>
+    <option value="Done">Done</option>
+</select>
+
         <!-- Action Section -->
         <section class="flex justify-between">
             <button id="filter-button" class="rounded-[4px] bg-yellow-500 text-white p-2">Filter</button>
@@ -69,5 +75,6 @@
     <!-- JavaScript External Link -->
     <script src="js/script.js"></script>
 </body>
+
 
 </html>
