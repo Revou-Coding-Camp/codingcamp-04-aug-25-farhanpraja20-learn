@@ -86,3 +86,61 @@ function clearTodos() {
     todoList = [];
     displayTodos();
 }
+
+function filterTodos(status) {
+    const todoBody = document.getElementById('todo-body');
+    todoBody.innerHTML = '';
+
+    // Filter data sesuai status
+    const filteredList = todoList.filter(item => item.status === status);
+
+    if (filteredList.length === 0) {
+        todoBody.innerHTML = `<tr><td colspan="4" class="no-task">No task found</td></tr>`;
+        return;
+    }
+
+    filteredList.forEach((item, index) => {
+        const row = document.createElement('tr');
+
+        // TASK
+        const taskCell = document.createElement('td');
+        taskCell.textContent = item.task;
+        row.appendChild(taskCell);
+
+        // DUE DATE
+        const dateCell = document.createElement('td');
+        dateCell.textContent = item.date;
+        row.appendChild(dateCell);
+
+        // STATUS
+        const statusCell = document.createElement('td');
+        statusCell.textContent = item.status;
+        row.appendChild(statusCell);
+
+        // ACTIONS
+        const actionsCell = document.createElement('td');
+
+        const doneBtn = document.createElement('button');
+        doneBtn.textContent = 'Done';
+        doneBtn.className = 'bg-green-500 text-white px-2 py-1 rounded mr-2';
+        doneBtn.onclick = () => {
+            todoList[index].status = 'Done';
+            displayTodos();
+        };
+        actionsCell.appendChild(doneBtn);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.className = 'bg-red-500 text-white px-2 py-1 rounded';
+        deleteBtn.onclick = () => {
+            todoList.splice(index, 1);
+            displayTodos();
+        };
+        actionsCell.appendChild(deleteBtn);
+
+        row.appendChild(actionsCell);
+
+        todoBody.appendChild(row);
+    });
+}
+
